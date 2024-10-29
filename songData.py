@@ -78,6 +78,7 @@ def main(playlist_id):
         track = item['track']
         track_ids.append(track['id'])  # Collecting track IDs for audio features
         song_data = {
+            'ID': track['id'],
             'Song Name': track['name'],
             'Artist': ', '.join([artist['name'] for artist in track['artists']]),
             'Cover Image URL': track['album']['images'][0]['url']
@@ -108,9 +109,8 @@ def main(playlist_id):
     # Save to CSV
     df = pd.DataFrame(songs)
     df.to_csv(f"{playlist_id}_songs.csv", index=False)
-    print(f"Data saved to {playlist_id}_songs.csv and cover image saved to {cover_folder}/")
 
 if __name__ == "__main__":
     # Replace with your desired playlist ID
-    playlist_id = '5ABHKGoOzxkaa28ttQV9sE'  
+    playlist_id = '1C8RuvGfRsX1fmxaehox9K'  
     main(playlist_id)
